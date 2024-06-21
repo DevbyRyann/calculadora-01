@@ -1,0 +1,161 @@
+@font-face {
+     font-family: eva;
+     src: url(evangelion-italic.otf);
+}
+
+@font-face {
+     font-family: eva2;
+     src: url(cyber.otf);
+}
+
+* {
+     margin: 0;
+     padding: 0;
+}
+
+.fundo {
+     background-image: linear-gradient(45deg, black, indigo);
+     height: 100vh;
+     color: white;
+     text-align: center;
+}
+
+.calculadora {
+     position: absolute;
+     background-color: black;
+     top: 10%;
+     left: 50%;
+     transform: translate(-50%, 50%);
+     border-radius: 15px;
+     padding: 15px;
+     border: 2px solid #1df561;
+     box-shadow: 0 0 20px rgba(29, 245, 97, 0.5);
+     animation: neon-glow 1.5s infinite alternate;
+     font-family: eva2;
+     font-size: 13px;
+
+}
+
+@keyframes neon-glow {
+     0% {
+         box-shadow: 0 0 20px rgba(29, 245, 97, 0.5), 0 0 20px rgba(29, 245, 97, 0.7), 0 0 30px rgba(29, 245, 97, 0.9), 0 0 40px rgba(29, 245, 97, 1), 0 0 50px rgba(29, 245, 97, 1);
+     }
+     100% {
+         box-shadow: 0 0 25px rgba(29, 245, 97, 0.5), 0 0 25px rgba(29, 245, 97, 0.7), 0 0 35px rgba(29, 245, 97, 0.9), 0 0 45px rgba(29, 245, 97, 1), 0 0 55px rgba(29, 245, 97, 1);
+     }
+}
+
+/* Este CSS já existia */
+.botao {
+     padding: .75rem 1.25rem;
+     border-radius: 25px;
+     color: black;
+     text-transform: uppercase;
+     font-size: 1rem;
+     letter-spacing: .15rem;
+     transition: all .3s;
+     position: relative;
+     overflow: hidden;
+     z-index: 1;
+     background-color: #1df561;
+     border: 2px solid indigo;
+     font-family: eva;
+}
+
+.botao::after {
+     content: '';
+     display: inline-block;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: #1df561;
+     border-radius: 25px;
+     z-index: -2;
+}
+
+.botao::after {
+     transition: all .4s;
+     background-color: #fff;
+     opacity: 0;
+}
+
+.botao::before {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 0%;
+     height: 100%;
+     background-color: #047958;
+     transition: all .3s;
+     border-radius: 25px;
+     z-index: -1;
+}
+
+.botao:hover::before {
+     width: 100%;
+}
+
+.botao:hover::after {
+     transform: scaleX(1.4) scaleY(1.6);
+     opacity: 0;
+}
+
+.botao:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.botao:active {
+     transform: translateY(-1px);
+     background-color: #2980b9;
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#resultado {
+     background-color: #fff;
+     width: 210px;
+     height: 35px;
+     margin: 9px;
+     border-radius: 20px;
+     font-size: 30px;
+     color: black;
+     text-align: right;
+     font-family: eva;
+     padding-right: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: flex-end;
+}
+
+.cabeça {
+     height: 230px;
+     width: 480px;
+}
+
+.nome {
+ 
+     font-family: eva2;
+     
+}
+
+#degrade {
+
+     color: transparent; /* Torna o texto transparente */
+    background: linear-gradient(to right, #1df561, indigo); /* O degradê projetado para o texto */
+    -webkit-background-clip: text; /* Limita o fundo ao texto (para navegadores baseados em WebKit como Chrome e Safari) */
+    background-clip: text;
+  
+}
+
+/* Animação de néon */
+@keyframes neon-glow {
+     0% {
+         box-shadow: 0 0 5px rgba(29, 245, 97, 0.3), 0 0 10px rgba(29, 245, 97, 0.2), 0 0 15px rgba(29, 245, 97, 0.1);
+     }
+     100% {
+         box-shadow: 0 0 20px rgba(29, 245, 97, 0.5), 0 0 30px rgba(29, 245, 97, 0.4), 0 0 40px rgba(29, 245, 97, 0.3);
+     }
+}

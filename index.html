@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+     <div class="fundo">
+         
+         <h1 class="nome">Monte</h1>
+         
+            <img class="cabeça" src="shinji.gif">
+         
+         <div class="calculadora">
+             
+             <h1 id="degrade">calculadora</h1>
+             <p></p>
+
+           <p id="resultado"></p>
+
+                <table>
+
+                  <tr>
+
+                      <td><button class="botao" onclick="clean(); playClearSound()">C</button></td>
+                      <td><button class="botao" onclick="back(); playOperationSound()"><</button></td>
+                      <td><button class="botao" onclick="insert('/'); playOperationSound()">/</button></td>
+                      <td><button class="botao" onclick="insert('*'); playOperationSound()">x</button></td>
+
+                  </tr>
+
+                  <tr>
+
+                      <td><button class="botao" onclick="insert('7'); playNumberSound()">7</button></td>
+                      <td><button class="botao" onclick="insert('8'); playNumberSound()">8</button></td>
+                      <td><button class="botao" onclick="insert('9'); playNumberSound()">9</button></td>
+                      <td><button class="botao" onclick="insert('-'); playOperationSound()">-</button></td>
+
+                  </tr>
+
+                  <tr>
+   
+                      <td><button class="botao" onclick="insert('4'); playNumberSound()">4</button></td>
+                      <td><button class="botao" onclick="insert('5'); playNumberSound()">5</button></td>
+                      <td><button class="botao" onclick="insert('6'); playNumberSound()">6</button></td>
+                      <td><button class="botao" onclick="insert('+'); playOperationSound()">+</button></td>
+
+                  </tr>
+
+                  <tr>
+
+                      <td><button class="botao" onclick="insert('1'); playNumberSound()">1</button></td>
+                      <td><button class="botao" onclick="insert('2'); playNumberSound()">2</button></td>
+                      <td><button class="botao" onclick="insert('3'); playNumberSound()">3</button></td>
+                      <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular(); playCalculateSound()">=</button></td>
+
+                  </tr>
+
+                  <tr>
+
+                      <td colspan="2"><button class="botao" style="width: 116px;" onclick="insert('0'); playNumberSound()">0</button></td>
+                      <td><button class="botao" onclick="insert('.'); playNumberSound()">.</button></td>
+
+                  </tr>
+
+                </table>
+
+         </div>
+
+     </div>
+
+     <audio id="number-sound" src="sfx botao.wav"></audio>
+     <audio id="operation-sound" src="operaçao sfx.wav"></audio>
+     <audio id="clear-sound" src="limpar sfx.wav"></audio>
+     <audio id="calculate-sound" src="resultado sfx.wav"></audio>
+
+     <audio autoplay loop>
+        <source src="lo fi.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+     <script>
+       function insert(num) {
+            document.getElementById('resultado').innerHTML += num;
+        }
+
+        function clean() {
+           document.getElementById('resultado').innerHTML = "";
+        }
+
+        function back() {
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+
+        function calcular(){
+            try {
+                var resultado = document.getElementById('resultado').innerHTML;
+                if(resultado) {
+                    document.getElementById('resultado').innerHTML = eval(resultado);
+                } 
+            } catch(e) {
+                document.getElementById('resultado').innerHTML = "Erro";
+            }
+        }
+
+        function playNumberSound() {
+            var sound = document.getElementById('number-sound');
+            sound.play();
+        }
+
+        function playOperationSound() {
+            var sound = document.getElementById('operation-sound');
+            sound.play();
+        }
+
+        function playClearSound() {
+            var sound = document.getElementById('clear-sound');
+            sound.play();
+        }
+
+        function playCalculateSound() {
+            var sound = document.getElementById('calculate-sound');
+            sound.play();
+        }
+     </script>
+
+</body>
+</html>
